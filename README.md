@@ -2,26 +2,34 @@
 
 Una librería sencilla para detectar los errores de su aplicación y enviarlos por correo.
 
-<p align="center"> [![](https://jitpack.io/v/applifycu/bugsend.svg)](https://jitpack.io/#applifycu/bugsend)</p>
+<p align="center">
+
+[![](https://jitpack.io/v/applifycu/bugsend.svg)](https://jitpack.io/#applifycu/bugsend)
+
+</p>
 
 ## Agregar
 
 1. Agrega a la raíz de su proyecto
 
-```allprojects {
+```groovy
+allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
 	}
-    ```
+    
+```
     
 2. Agregar la dependencia a su proyecto
     
-    ```dependencies {
+```groovy
+    dependencies {
 	        implementation 'com.github.applifycu:bugsend:1.0.1'
 	}
-    ```
+    
+```
     
 ## Uso
 
