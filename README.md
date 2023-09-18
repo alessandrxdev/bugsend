@@ -1,7 +1,7 @@
 # BugSend
 <p align="center">
 
-<img src="./example/example-app.PNG" width="50%">
+<img src="./example/example-app.PNG" width="80%">
 
 Una librería sencilla para detectar los errores de su aplicación y enviarlos por correo.
 
