@@ -4,7 +4,7 @@ Una librería sencilla para detectar los errores de su aplicación y enviarlos p
 
 <p align="center">
 
-<img src="./example/example-app.PNG" width="100%">
+<img src="./example/example-app.PNG" width="50%">
 
 [![](https://jitpack.io/v/applifycu/bugsend.svg)](https://jitpack.io/#applifycu/bugsend)
 
