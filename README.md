@@ -1,10 +1,9 @@
 # BugSend
-
-Una librería sencilla para detectar los errores de su aplicación y enviarlos por correo.
-
 <p align="center">
 
-<img src="./example/example-app.PNG" width="50%">
+<img src="./example/example-app.png" width="50%">
+
+Una librería sencilla para detectar los errores de su aplicación y enviarlos por correo.
 
 [![](https://jitpack.io/v/applifycu/bugsend.svg)](https://jitpack.io/#applifycu/bugsend)
 
