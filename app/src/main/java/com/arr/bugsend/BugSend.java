@@ -1,4 +1,5 @@
 package com.arr.bugsend;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,7 +9,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class BugSend {
-    
+
     private final Activity activity;
     private String title;
     private String message;
@@ -16,6 +17,7 @@ public class BugSend {
     private String email;
     private String asunto;
     private int drawable;
+    private Class<? extends Activity> launchActivity;
 
     public BugSend(Activity activity) {
         this.activity = activity;
@@ -51,7 +53,16 @@ public class BugSend {
         return this;
     }
 
+    public BugSend setLaunchActivity(Class<? extends Activity> launch) {
+        this.launchActivity = launch;
+        return this;
+    }
+
     public void show() {
+        if (launchActivity != null) {
+            Intent i = new Intent(activity, launchActivity);
+            activity.startActivity(i);
+        }
         StringBuilder builder = new StringBuilder();
         try {
             BufferedReader reader =
