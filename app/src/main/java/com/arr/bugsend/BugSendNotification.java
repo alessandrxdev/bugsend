@@ -96,7 +96,7 @@ public class BugSendNotification {
                 PendingIntent.getActivity(mActivity, 0, bug, PendingIntent.FLAG_IMMUTABLE);
         NotificationCompat.Builder notifBuilder =
                 new NotificationCompat.Builder(mActivity, CHANNEL_ID)
-                        .setSmallIcon(R.drawable.ic_notification_bug.xml)
+                        .setSmallIcon(R.drawable.ic_notification_bug)
                         .setContentTitle(title)
                         .setContentText(message)
                         .setPriority(NotificationCompat.PRIORITY_HIGH)
