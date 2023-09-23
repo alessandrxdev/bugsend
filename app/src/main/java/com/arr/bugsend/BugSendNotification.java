@@ -7,7 +7,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
-import com.arr.bugsend.R;
+
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import java.io.BufferedReader;
@@ -22,6 +22,7 @@ public class BugSendNotification {
     private String extra;
     private String email;
     private String asunto;
+    private int smallIcon;
 
     private static final String CHANNEL_ID = "BugSend";
     private static final String CHANNEL_NAME = "BugSend";
@@ -95,13 +96,13 @@ public class BugSendNotification {
                 PendingIntent.getActivity(mActivity, 0, bug, PendingIntent.FLAG_IMMUTABLE);
         NotificationCompat.Builder notifBuilder =
                 new NotificationCompat.Builder(mActivity, CHANNEL_ID)
-                        .setSmallIcon(R.drawable.ic_bug)
+                        .setSmallIcon(R.drawable.ic_notification_bug.xml)
                         .setContentTitle(title)
                         .setContentText(message)
                         .setPriority(NotificationCompat.PRIORITY_HIGH)
                         .addAction(
                                 R.drawable.ic_send,
-                                mActivity.getString(R.stringsend_report),
+                                mActivity.getString(R.string.send_report),
                                 pending)
                         .setAutoCancel(true);
 
