@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -61,8 +62,19 @@ public class BugSend {
     public void show() {
         if (launchActivity != null) {
             Intent i = new Intent(activity, launchActivity);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             activity.startActivity(i);
+            waitForActivityResult();
+        } else {
+            showDialog();
         }
+    }
+
+    private void waitForActivityResult() {
+        activity.startActivityForResult(new Intent(activity, BugSendActivity.class), 20);
+    }
+
+    private void showDialog() {
         StringBuilder builder = new StringBuilder();
         try {
             BufferedReader reader =
@@ -126,5 +138,15 @@ public class BugSend {
         String info = builder.toString();
 
         return info;
+    }
+
+    public static class BugSendActivity extends Activity {
+
+        @Override
+        protected void onCreate(Bundle arg0) {
+            super.onCreate(arg0);
+            setResult(RESULT_OK);
+            finish();
+        }
     }
 }

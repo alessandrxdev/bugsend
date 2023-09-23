@@ -55,9 +55,11 @@ En su MainActivity.class agregue
      .setIcon(R.drawable.ic_bug_report_24px)
      .setMessage(getString(R.string.message_dialog))
      .setEmail("soporte@email.com")
-     .setAsunto("REPORT/APP")
-     .setExtraInfo("EXTRA MESSAGE") // aqui puedes agregar un texto adicional como la versión de la app.
+     .setSubject("REPORT/APP")
+     .setExtraText("EXTRA MESSAGE") // aqui puedes agregar un texto adicional como la versión de la app.
+     .setLaunchActivity(Bug.class) // opcional, puede lanzar una actividad nueva si existe un error.
      .show();
+     
  ```
  
  Su AndroidManifest
@@ -76,18 +78,17 @@ soporteapplify@gmail.com
 ### License
  
  ```
-    Copyright (C) 2023  Applify
+Copyright (C) 2023  Applify
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-    
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
