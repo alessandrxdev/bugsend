@@ -65,13 +65,14 @@ En su MainActivity.class agregue
  2 `Notification`
  
  ```java
- new BugSendNotidication(this)
+ new BugSendNotification(this)
       .setTitle("title notification")
       .setMessage("message notification")
       .setEmail("soporte@email.com")
       .setSubject("REPORT")
       .setExtraText("extra message") // opcional
       .show();
+ ```
  
  Su AndroidManifest
  
