@@ -18,7 +18,6 @@ public class BugSend {
     private String email;
     private String asunto;
     private int drawable;
-    private Class<? extends Activity> launchActivity;
 
     public BugSend(Activity activity) {
         this.activity = activity;
@@ -54,27 +53,7 @@ public class BugSend {
         return this;
     }
 
-    public BugSend setLaunchActivity(Class<? extends Activity> launch) {
-        this.launchActivity = launch;
-        return this;
-    }
-
     public void show() {
-        if (launchActivity != null) {
-            Intent i = new Intent(activity, launchActivity);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            activity.startActivity(i);
-            waitForActivityResult();
-        } else {
-            showDialog();
-        }
-    }
-
-    private void waitForActivityResult() {
-        activity.startActivityForResult(new Intent(activity, BugSendActivity.class), 20);
-    }
-
-    private void showDialog() {
         StringBuilder builder = new StringBuilder();
         try {
             BufferedReader reader =
@@ -138,15 +117,5 @@ public class BugSend {
         String info = builder.toString();
 
         return info;
-    }
-
-    public static class BugSendActivity extends Activity {
-
-        @Override
-        protected void onCreate(Bundle arg0) {
-            super.onCreate(arg0);
-            setResult(RESULT_OK);
-            finish();
-        }
     }
 }

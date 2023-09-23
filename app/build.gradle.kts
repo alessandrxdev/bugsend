@@ -58,7 +58,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.applifycu"
             artifactId = "bugsend"
-            version = "1.0.3"
+            version = "1.0.4-alpha1"
 
             afterEvaluate {
                 from(components["release"])

@@ -45,8 +45,9 @@ public class MyApplication extends Application {
     }
 }
 ```
-
 En su MainActivity.class agregue
+
+1 `AlertDialog`
 
 ```java
    
@@ -57,10 +58,20 @@ En su MainActivity.class agregue
      .setEmail("soporte@email.com")
      .setSubject("REPORT/APP")
      .setExtraText("EXTRA MESSAGE") // aqui puedes agregar un texto adicional como la versión de la app.
-     .setLaunchActivity(Bug.class) // opcional, puede lanzar una actividad nueva si existe un error.
      .show();
      
  ```
+ 
+ 2 `Notification`
+ 
+ ```java
+ new BugSendNotidication(this)
+      .setTitle("title notification")
+      .setMessage("message notification")
+      .setEmail("soporte@email.com")
+      .setSubject("REPORT")
+      .setExtraText("extra message") // opcional
+      .show();
  
  Su AndroidManifest
  
