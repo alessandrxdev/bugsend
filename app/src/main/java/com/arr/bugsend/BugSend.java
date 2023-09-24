@@ -77,6 +77,10 @@ public class BugSend {
         }
         return null;
     }
+        
+   public void deleteFile(){
+       activity.deleteFile("stack.trace");
+}
 
     public void show() {
         StringBuilder builder = new StringBuilder();
@@ -98,7 +102,6 @@ public class BugSend {
                 Intent launch = new Intent(activity, launchActivity);
                 launch.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 activity.startActivity(launch);
-                activity.deleteFile("stack.trace");
             } else {
                 String report = getDiviceInfo() + builder;
                 new MaterialAlertDialogBuilder(activity)
