@@ -78,7 +78,7 @@ public class BugSend {
         return null;
     }
         
-   public void deleteFile(){
+   public void deleteStackTrace(){
        activity.deleteFile("stack.trace");
 }
 
