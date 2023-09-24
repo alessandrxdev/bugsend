@@ -18,6 +18,7 @@ public class BugSend {
     private String email;
     private String asunto;
     private int drawable;
+    private Class<? extends Activity> launchActivity;
 
     public BugSend(Activity activity) {
         this.activity = activity;
@@ -53,6 +54,30 @@ public class BugSend {
         return this;
     }
 
+    public BugSend setLaunchActivity(Class<? extends Activity> launch) {
+        this.launchActivity = launch;
+        return this;
+    }
+
+    public String readError() {
+        StringBuilder builder = new StringBuilder();
+        try {
+            BufferedReader reader =
+                    new BufferedReader(
+                            new InputStreamReader(activity.openFileInput("stack.trace")));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                builder.append(line).append("\n");
+            }
+            reader.close();
+            return getDiviceInfo() + builder;
+        } catch (Exception e) {
+            activity.deleteFile("stack.trace");
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public void show() {
         StringBuilder builder = new StringBuilder();
         try {
@@ -69,25 +94,32 @@ public class BugSend {
             e.printStackTrace();
         }
         if (builder.length() > 0) {
-            String report = getDiviceInfo() + builder;
-            new MaterialAlertDialogBuilder(activity)
-                    .setIcon(activity.getDrawable(drawable))
-                    .setTitle(title)
-                    .setMessage(message)
-                    .setPositiveButton(
-                            android.R.string.ok,
-                            (dialog, which) -> {
-                                sendCrashReport(report);
-                                activity.deleteFile("stack.trace");
-                            })
-                    .setNegativeButton(
-                            android.R.string.cancel,
-                            (dialog, which) -> {
-                                activity.deleteFile("stack.trace");
-                                dialog.dismiss();
-                            })
-                    .setCancelable(false)
-                    .show();
+            if (launchActivity != null) {
+                Intent launch = new Intent(activity, launchActivity);
+                launch.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                activity.startActivity(launch);
+                activity.deleteFile("stack.trace");
+            } else {
+                String report = getDiviceInfo() + builder;
+                new MaterialAlertDialogBuilder(activity)
+                        .setIcon(activity.getDrawable(drawable))
+                        .setTitle(title)
+                        .setMessage(message)
+                        .setPositiveButton(
+                                android.R.string.ok,
+                                (dialog, which) -> {
+                                    sendCrashReport(report);
+                                    activity.deleteFile("stack.trace");
+                                })
+                        .setNegativeButton(
+                                android.R.string.cancel,
+                                (dialog, which) -> {
+                                    activity.deleteFile("stack.trace");
+                                    dialog.dismiss();
+                                })
+                        .setCancelable(false)
+                        .show();
+            }
         } else {
             activity.deleteFile("stack.trace");
         }
