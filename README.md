@@ -26,7 +26,7 @@ allprojects {
     
 ```groovy
 dependencies {
-   implementation 'com.github.applifycu:bugsend:1.0.1'
+   implementation 'com.github.alessandrxdev:bugsend:1.0.4-alpha3'
 }
 ```
     
